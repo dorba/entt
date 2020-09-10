@@ -1,6 +1,12 @@
 #ifndef ENTT_CONFIG_CONFIG_H
 #define ENTT_CONFIG_CONFIG_H
 
+/**
+ * dorba - 9/9/2020 - remove string_view from entt
+ * for suitable use with minimal wasm compilation
+ */
+#define ENTT_DORBA_FORK_NO_STRING
+
 
 #ifndef ENTT_NOEXCEPT
 #   define ENTT_NOEXCEPT noexcept
@@ -69,6 +75,12 @@
 #   endif
 #endif
 
+#ifdef ENTT_DORBA_FORK_NO_STRING
+  #undef ENTT_PRETTY_FUNCTION_CONSTEXPR
+  #undef ENTT_PRETTY_FUNCTION
+  #undef ENTT_PRETTY_FUNCTION_PREFIX
+  #undef ENTT_PRETTY_FUNCTION_SUFFIX
+#endif
 
 #ifndef ENTT_STANDALONE
 #   define ENTT_FAST_PATH(...) false
